@@ -9,5 +9,7 @@ html {
 	background-color:coral;
 }
 
-h1{
+#myCanvas{
+	border-style: groove;
+	border-width: 5px;
 }
