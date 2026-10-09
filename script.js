@@ -155,7 +155,7 @@ var SLIDER_POS = 0
 var animation_state = "pause"
 var animation_slider = document.getElementById("animation_slider")
 
-
+//testing
 
 var animationController = new AnimationController()
 var MAZE = new Maze(canvasX,canvasY,canvasW,canvasH,"white", CELLSIZE)
