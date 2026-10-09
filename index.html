@@ -13,20 +13,77 @@
 </head>
 
 <body>
-	<p>Row: <span id="mousey">0</span> </p>
-	<p>Column: <span id="mousex">0</span> </p>
-	<canvas id="myCanvas"></canvas>
 
-	<div id = "colorPalette"></div>
-		<button id="path" type="button">Path</button>
-		<button id="wall" type="button">Wall</button>
-		<button id="water" type="button">Water</button>
-		<button id="snow" type="button">Snow</button>
-		<button id="forest" type="button">Forest</button>
-		<button id="sand" type="button">Sand</button>
+	<div id = "content">
+
+		<div id="left">
+
+			<div id = "colorPalette">
+				<button id= "start" type="button">Start</button>
+				<button id= "end" type="button">End</button>
+				<button id= "clear" type="button">Clear</button>
+				<button id="path" type="button">Path</button>
+				<button id="wall" type="button">Wall</button>
+				<button id="water" type="button">Water</button>
+				<button id="snow" type="button">Snow</button>
+				<button id="forest" type="button">Forest</button>
+				<button id="sand" type="button">Sand</button>
+
+			</div>
+
+			<div class="dropdown">
+				<label for="algos">Searh Algorithms:</label>
+				<select id="algos" name="algos">
+					<option value="BFS">BFS</option>
+					<option value="DFS">DFS</option>
+					<option value="A-STAR">A-STAR</option>
+					<option value="Dijstras">Dijstras</option>
+				</select>
+			</div>
+
+			<div> 
+				<button id="solve_btn" type="button">Solve button!</button>
+				<button id="img_btn" type="button">IMG save button!</button>
+				<img id="img_tag" type="img"> IMAGE supposed be made here</img>
+			</div>
+
+			<canvas id="myCanvas"></canvas>
+
+			<div class="slidecontainer">
+				<p>animation progress:</p>
+				<input type="range" min="1" max="100" value="0" class="slider" id="animation_slider">
+			</div>
+
+			<div id ="animation_controls">
+				
+				<button id="animate_btn" type="button">
+
+					<svg xmlns="http://w3.org" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+						<path d="M8 5v14l11-7z"/>
+					</svg>
+
+					<span> play animation!</span>
+				</button>
+			</div>
+			
+		</div>
+
+		<div id="right">
+			<!-- all previous maze solve will be stored here -->
+		<div>
 	</div>
-	<script src="script.js" ></script>
-	
+			
+	<script  src="maze.js"> </script>
+	<script  src="utils/minHeap.js"> </script>
+	<script  src="utils/helper.js"> </script>
+	<script  src="graphAlgo/bfs.js"> </script>
+	<script  src="graphAlgo/dfs.js"> </script>
+	<script  src="graphAlgo/dijstras.js"> </script>
+	<script  src="graphAlgo/a_star.js"> </script>
+
+
+	<script src="script.js" > </script>
+
 </body>
 
 	

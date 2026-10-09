@@ -1,6 +1,9 @@
 html {
   height: 100%;
   width: 100%;
+	box-sizing:border-box;
+	background: linear-gradient(135deg, #ffc695 0.000%, #636676 50.000%, #001426 100.000%);
+
 }
 
 
@@ -12,4 +15,39 @@ html {
 #myCanvas{
 	border-style: groove;
 	border-width: 5px;
+}
+
+
+#content{
+	display:flex;
+	width:100%;
+}
+
+#left{
+	width:50%;
+}
+
+#right{
+	width:50%;
+	border-style:groove;
+}
+
+.mazeimg{
+	width : 60%;
+}
+.mazecard{
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	max-width: 500px;
+  max-height:500px;
+	min-width: 500px;
+	min-height:500px;
+	
+}
+
+.mazecard:hover {
+	transform: scale(1.5); 
+}
+
+.slider{
+	width: 100%
 }
