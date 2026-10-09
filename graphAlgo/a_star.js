@@ -1,9 +1,26 @@
+if (typeof require !== 'undefined') {
+	// no "var" here: the browser already has "class MinHeap" / "class Maze" as globals
+	globalThis.MinHeap = require('../utils/minHeap.js');
+	require('../maze.js'); // sets the global Maze (see maze.js)
+}
 
-function A_star_algorithm(adjacency_list, start_list, target_id){
-	/*** 
+function A_star_algorithm(adjacency_list, start_list, target_id, maze = MAZE){
+	/***
 	 * start_list = [cost, id]
 	 *
 	 */
+	if (adjacency_list === null || adjacency_list === undefined || adjacency_list.constructor !== Object || Object.keys(adjacency_list).length === 0){
+		return [ [], [] ]
+	}
+
+	if ( !Array.isArray(start_list) || start_list.length != 2){
+		return [ [], [] ]
+	}
+
+	if (!(maze instanceof Maze)){
+		return [ [], [] ]
+	}
+
 	var animation_frames = []// store all the visited nodes for next layer
 
 	var shortest = {}
@@ -19,12 +36,12 @@ function A_star_algorithm(adjacency_list, start_list, target_id){
 
 	function man_dist(current, goal){
 		// This function returns the manhatten between 2 tiles given their tile id
-		
+
 		// current : integer  => represents the starting tile ID 
 		// goal : integer => represents the ending tile ID
-		
-		var x_dif = abs(current%10 - goal%10)
-		var y_dif = abs( ( Math.floor(current/10) -  Math.floor(goal/10) )  )
+
+		var x_dif = Math.abs(current%10 - goal%10)
+		var y_dif = Math.abs( ( Math.floor(current/10) -  Math.floor(goal/10) )  )
 		return (x_dif + y_dif)
 	}
 
@@ -76,4 +93,8 @@ function A_star_algorithm(adjacency_list, start_list, target_id){
 	}// while 
 
 	return [visited, animation_frames]
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = A_star_algorithm;
 }

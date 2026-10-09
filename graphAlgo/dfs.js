@@ -1,5 +1,10 @@
-function DFS_path(adjacency_list, start_list, target){
-	console.log("executing DFS")
+if (typeof require !== 'undefined') {
+	var {myRandom, coord_ID, ID_coord, convertToGraph} = require('../utils/helper.js');
+	require('../maze.js'); // sets the global Maze (see maze.js)
+}
+
+function DFS_path(adjacency_list, start_list, target, maze = MAZE){
+	//console.log("executing DFS")
 /**
  *
  * start: integers = 0
@@ -13,6 +18,18 @@ function DFS_path(adjacency_list, start_list, target){
  * }
  * 
  */
+	if (adjacency_list === null || adjacency_list === undefined || adjacency_list.constructor !== Object || Object.keys(adjacency_list).length === 0){
+		return [ [], [] ]
+	}
+
+	if ( !Array.isArray(start_list) || start_list.length != 2){
+		return [ [], [] ]
+	}
+
+	if (!(maze instanceof Maze)){
+		return [ [], [] ]
+	}
+
 	var start = parseInt(start_list[1])
 	var distance = 0
 	var stack = [start]
@@ -37,8 +54,8 @@ function DFS_path(adjacency_list, start_list, target){
 					visited[neighbor] = current_node
 					framedata["searched"].push(neighbor) //marking down all the neighbors thats being process
 
-					let [noderow,nodecol] =ID_coord(start, MAZE)
-					let [irow, icol]=ID_coord(i, MAZE)
+					let [noderow,nodecol] =ID_coord(start, maze)
+					let [irow, icol]=ID_coord(i, maze)
 					framedata["md"].push( Math.abs(noderow-irow) + Math.abs(nodecol-icol) )
 
 					if (target==neighbor){
@@ -49,9 +66,13 @@ function DFS_path(adjacency_list, start_list, target){
 
 				}
 			}
-	
+
 		animation_frames.push(framedata)
 		distance += 1
 	}
 	return [visited, animation_frames]
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = DFS_path;
 }
